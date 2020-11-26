@@ -50,7 +50,7 @@ func (d *Detector) SetMode(x int) error {
 // Note that internally all processing will be done 8000 Hz;
 // input data in higher sample rates will be downsampled.
 func (d *Detector) SetSampleRate(x int) error {
-	errno := C.fvad_set_sample_rate(d.fvad, 48000)
+	errno := C.fvad_set_sample_rate(d.fvad, C.int(x))
 	if errno != 0 {
 		return fmt.Errorf("invalid sample rate: %v", x)
 	}
